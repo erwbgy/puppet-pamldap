@@ -32,7 +32,7 @@ class pamldap::config (
   }
   file { '/etc/sssd/sssd.conf':
     ensure  => present,
-    mode    => '0444',
+    mode    => '0600',
     content => template('pamldap/sssd.conf.erb'),
     require => Class['pamldap::install'],
     notify  => Class['pamldap::service'],
