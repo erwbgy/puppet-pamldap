@@ -1,0 +1,4 @@
+pamldap:
+  base_dn: 'dc=sportingbet,dc=com'
+  uris: [ 'ldap://10.7.96.13', 'ldap://10.7.96.14' ]
+
