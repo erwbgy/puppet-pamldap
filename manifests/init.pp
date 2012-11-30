@@ -1,6 +1,6 @@
 class pamldap (
-  $base_dn,
-  $uris,
+  $base_dn = hiera('pamldap::base_dn'),
+  $uris    = hiera('pamldap::uris'),
 ) {
   class { 'pamldap::config':
     base_dn => $base_dn,
