@@ -33,8 +33,21 @@
       <section id="main_content" class="inner">
         <h1>puppet-pamldap</h1>
 
-<p>Puppet module to use LDAP for user login/authentication/authorisation and
-related name resolution</p>
+<p>Configure a system to use LDAP for user login/authentication/authorisation and
+related name resolutionL</p>
+
+<pre><code>pamldap::base_dn: 'dc=example,dc=com'
+pamldap::uris: [ 'ldap://10.7.96.13', 'ldap://10.7.96.14' ]
+</code></pre>
+
+<p>Currently only tested on Redhat-like systems.</p>
+
+<h2>Parameters</h2>
+
+<p><em>base_dn</em>: LDAP base distinguished name used in user and group entries</p>
+
+<p><em>uris</em>: LDAP server connection details - a list of URIs in the format
+ldap:://[hostname]</p>
 
 <h2>Credits</h2>
 
