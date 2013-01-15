@@ -1,7 +1,7 @@
 # puppet-pamldap
 
-Configure a system to use LDAP for user login/authentication/authorisation and
-related name resolutionL
+Configure a system to use LDAP for user authentication, authorisation and
+related name resolution:
 
     pamldap::base_dn: 'dc=example,dc=com'
     pamldap::uris: [ 'ldap://10.7.96.13', 'ldap://10.7.96.14' ]
