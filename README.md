@@ -1,7 +1,7 @@
 # puppet-pamldap
 
 Configure a system to use LDAP for user authentication, authorisation and
-related name resolution:
+related name resolution.
 
 Currently only tested on Redhat-like systems.
 
