@@ -3,10 +3,25 @@
 Configure a system to use LDAP for user authentication, authorisation and
 related name resolution:
 
+Currently only tested on Redhat-like systems.
+
+## Usage
+
+Include the pamldap module in your puppet configuration:
+
+    include pamldap
+
+and add required hiera configuration - for example:
+
     pamldap::base_dn: 'dc=example,dc=com'
     pamldap::uris: [ 'ldap://10.7.96.13', 'ldap://10.7.96.14' ]
 
-Currently only tested on Redhat-like systems.
+It can also be used as a parameterised class - for example:
+
+    class { 'pamldap':
+      base_dn => 'dc=example,dc=com',
+      uris    => [ 'ldap://10.7.96.13', 'ldap://10.7.96.14' ],
+    }
 
 ## Parameters
 
