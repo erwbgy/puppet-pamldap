@@ -12,8 +12,7 @@ ldap_id_use_start_tls = False
 chpass_provider = ldap
 cache_credentials = True
 ldap_uri = <%= @uris_comma %>
-ldap_search_base = dc=<%= @base_dn %>
+ldap_search_base = <%= @base_dn %>
 ldap_access_filter = (&(objectclass=shadowaccount)(objectclass=posixaccount))
-id_provider = ldap
 ldap_schema = rfc2307
 
