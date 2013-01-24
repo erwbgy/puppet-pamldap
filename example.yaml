@@ -1,2 +1,2 @@
-pamldap::base_dn: 'dc=sportingbet,dc=com'
-pamldap::uris: [ 'ldap://10.7.96.13', 'ldap://10.7.96.14' ]
+pamldap::base_dn: 'dc=example,dc=com'
+pamldap::uris: [ 'ldap://10.0.96.13', 'ldap://10.1.96.13' ]
