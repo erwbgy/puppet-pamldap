@@ -44,11 +44,4 @@ class pamldap::config (
     require => Class['pamldap::install'],
     notify  => Class['pamldap::service'],
   }
-  file { '/etc/idmapd.conf':
-    ensure  => present,
-    mode    => '0644',
-    content => template('pamldap/idmapd.conf.erb'),
-    require => Class['pamldap::install'],
-    notify  => Class['pamldap::service'],
-  }
 }
