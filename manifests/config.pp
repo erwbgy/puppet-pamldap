@@ -1,7 +1,6 @@
 class pamldap::config (
   $base_dn,
   $uris,
-  $domain,
 ) {
   $uris_space = join($uris, ' ')
   $uris_comma = join($uris, ',')
