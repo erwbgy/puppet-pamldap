@@ -35,6 +35,9 @@ class pamldap::config (
     require => Class['pamldap::install'],
     notify  => Class['pamldap::service'],
   }
+  file { '/etc/openldap':
+    ensure  => directory,
+  }
   file { [ '/etc/pam_ldap.conf', '/etc/openldap/ldap.conf' ]:
     ensure  => link,
     target  => '/etc/ldap.conf',
