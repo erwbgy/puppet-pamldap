@@ -21,6 +21,18 @@ class pamldap::config (
     target  => 'system-auth-ac',
     require => File['/etc/pam.d/system-auth-ac'],
   }
+  file { '/etc/pam.d/password-auth-ac':
+    ensure  => present,
+    mode    => '0444',
+    content => template('pamldap/password-auth.erb'),
+    require => Class['pamldap::install'],
+    notify  => Class['pamldap::service'],
+  }
+  file { '/etc/pam.d/password-auth':
+    ensure  => present,
+    target  => 'password-auth-ac',
+    require => File['/etc/pam.d/password-auth-ac'],
+  }
   file { '/etc/nsswitch.conf':
     ensure  => present,
     mode    => '0444',
