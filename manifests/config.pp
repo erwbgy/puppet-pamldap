@@ -8,14 +8,18 @@ class pamldap::config (
   File {
     owner => 'root',
     group => 'root',
-    links => 'follow',
   }
-  file { '/etc/pam.d/system-auth':
+  file { '/etc/pam.d/system-auth-ac':
     ensure  => present,
     mode    => '0444',
     content => template('pamldap/system-auth.erb'),
     require => Class['pamldap::install'],
     notify  => Class['pamldap::service'],
+  }
+  file { '/etc/pam.d/system-auth':
+    ensure  => present,
+    target  => 'system-auth-ac',
+    require => File['/etc/pam.d/system-auth-ac'],
   }
   file { '/etc/nsswitch.conf':
     ensure  => present,
