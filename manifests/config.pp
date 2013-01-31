@@ -8,6 +8,7 @@ class pamldap::config (
   File {
     owner => 'root',
     group => 'root',
+    links => 'follow',
   }
   file { '/etc/pam.d/system-auth':
     ensure  => present,

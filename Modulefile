@@ -1,5 +1,5 @@
 name    'erwbgy-pamldap'
-version '0.1.0'
+version '0.1.1'
 source 'https://github.com/erwbgy/puppet-pamldap.git'
 author 'erwbgy'
 license 'Apache License, Version 2.0'
