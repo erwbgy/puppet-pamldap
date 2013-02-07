@@ -5,9 +5,6 @@ class pamldap::config (
   $uris_space = join($uris, ' ')
   $uris_comma = join($uris, ',')
   
-  include "pamldap::config::$operatingsystem"
-}
-class pamldap::config::common {
   # defaults
   File {
     owner => 'root',
@@ -51,34 +48,31 @@ class pamldap::config::common {
     require => Class['pamldap::install'],
     notify  => Class['pamldap::service'],
   }
-}
 
-class pamldap::config::redhat inherits pamldap::config::common {
-  file { '/etc/ldap.conf':
-    ensure  => present,
-    mode    => '0444',
-    content => template('pamldap/ldap.conf.erb'),
-    require => Class['pamldap::install'],
-    notify  => Class['pamldap::service'],
-  }
-  file { [ '/etc/pam_ldap.conf', '/etc/openldap/ldap.conf' ]:
-    ensure  => link,
-    target  => '/etc/ldap.conf',
-    require => File['/etc/ldap.conf'],
-    notify  => Class['pamldap::service'],
-  }
-}
-
-class pamldap::config::centos inherits pamldap::config::redhat {
-    # No changes
-}
-
-class pamldap::config::ubuntu inherits pamldap::config::common {
-  file { '/etc/ldap/ldap.conf':
-    ensure  => present,
-    mode    => '0444',
-    content => template('pamldap/ldap.conf.erb'),
-    require => Class['pamldap::install'],
-    notify  => Class['pamldap::service'],
+  case $::osfamily {
+    'RedHat': {
+      file { '/etc/ldap.conf':
+        ensure  => present,
+        mode    => '0444',
+        content => template('pamldap/ldap.conf.erb'),
+        require => Class['pamldap::install'],
+        notify  => Class['pamldap::service'],
+      }
+      file { [ '/etc/pam_ldap.conf', '/etc/openldap/ldap.conf' ]:
+        ensure  => link,
+        target  => '/etc/ldap.conf',
+        require => File['/etc/ldap.conf'],
+        notify  => Class['pamldap::service'],
+      }
+    }
+    'Debian': {
+      file { '/etc/ldap/ldap.conf':
+        ensure  => present,
+        mode    => '0444',
+        content => template('pamldap/ldap.conf.erb'),
+        require => Class['pamldap::install'],
+        notify  => Class['pamldap::service'],
+      }
+    }
   }
 }
