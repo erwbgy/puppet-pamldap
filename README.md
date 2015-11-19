@@ -1,3 +1,7 @@
+# _Unmaintained_
+
+I no longer use Puppet actively and this software has not been maintained for some time.
+
 # puppet-pamldap
 
 Configure a system to use LDAP for user authentication, authorisation and
